@@ -1,11 +1,20 @@
-async function getData() {
-    const res = await fetch('https://accounts.spotify.com/api/token?grant_type=client_credentials', {
-        method: 'POST',
-        headers: {
-            'Authorization': 'Basic MTIzNTNhY2IwMDE1NDNmY2E4YmYzM2ZhZTVmNTk4NDI6ZGViMDcxNzNhNmQxNDZhNjg0NjRhMDFlYTU2ZDBjNDY=',
-            'Content-Type': 'application/x-www-form-urlencoded'
+async function getUserSpotifyAccessToken() {
+    const res = await fetch(
+        'https://accounts.spotify.com/api/token?grant_type=client_credentials',
+        {
+            method: 'POST',
+            headers: {
+                Authorization:
+                    'Basic ' +
+                    btoa(
+                        process.env.SPOTIFY_CLIENT_ID +
+                            ':' +
+                            process.env.SPOTIFY_CLIENT_SECRET
+                    ),
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
         }
-    });
+    );
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -15,8 +24,7 @@ async function getData() {
 }
 
 export default async function Page() {
-    const data = await getData();
-    const userSpotifyAccessToken = data.access_token;
+    const userSpotifyAccessToken = await getUserSpotifyAccessToken();
 
     return (
         <>
