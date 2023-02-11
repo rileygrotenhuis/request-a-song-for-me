@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model Request {
+  id           Int      @id @default(autoincrement())
+  name         String
+  artist       String
+  image_url    String
+  image_height String
+  image_width  Int
+  url          String   @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
