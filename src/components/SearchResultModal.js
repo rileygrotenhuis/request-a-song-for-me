@@ -3,20 +3,22 @@
 import { Modal, Box, Typography, Button } from '@mui/material';
 
 async function requestNewSong(newSong) {
-    await fetch('/api/request', {
+    const res = await fetch('/api/request', {
         method: 'POST',
         headers: {
-            'Accept': 'application/json'
+            Accept: 'application/json',
         },
         body: JSON.stringify({
-            'name': newSong.name,
-            'artist': newSong.artist,
-            'image_url': newSong.image.url,
-            'image_height': newSong.image.height,
-            'image_width': newSong.image.width,
-            'url': newSong.url
+            name: newSong.name,
+            artist: newSong.artist,
+            image_url: newSong.image.url,
+            image_height: newSong.image.height,
+            image_width: newSong.image.width,
+            url: newSong.url,
         }),
     });
+
+    return res.ok;
 }
 
 const style = {
@@ -63,7 +65,12 @@ export default function SearchResultsModal(props) {
                     <Button
                         variant="contained"
                         onClick={async () => {
-                            await requestNewSong(props);
+                            const newRequest = await requestNewSong(props);
+                            alert(
+                                newRequest
+                                    ? `Thank you for requesting ${props.name} by ${props.artist}!`
+                                    : 'Something went wrong with your request, please try again!'
+                            );
                             props.modalClose();
                         }}
                     >

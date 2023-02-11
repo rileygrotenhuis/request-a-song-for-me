@@ -1,17 +1,11 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
         const requestBody = JSON.parse(req.body);
 
-        const {
-            name,
-            artist,
-            image_url,
-            image_height,
-            image_width,
-            url
-        } = requestBody;
+        const { name, artist, image_url, image_height, image_width, url } =
+            requestBody;
 
         const prisma = new PrismaClient();
 
@@ -22,8 +16,8 @@ export default async function handler(req, res) {
                 image_url,
                 image_height,
                 image_width,
-                url
-            }
+                url,
+            },
         });
 
         prisma.$disconnect();
