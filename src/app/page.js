@@ -1,3 +1,5 @@
+import SearchForm from "@/components/SearchForm";
+
 async function getUserSpotifyAccessToken() {
     const res = await fetch(
         'https://accounts.spotify.com/api/token?grant_type=client_credentials',
@@ -28,7 +30,7 @@ export default async function Page() {
 
     return (
         <>
-            <h1>Testing</h1>
+            <SearchForm accessToken={userSpotifyAccessToken.access_token} />
         </>
     );
 }
