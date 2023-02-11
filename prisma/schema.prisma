@@ -12,7 +12,7 @@ model Request {
   name         String
   artist       String
   image_url    String
-  image_height String
+  image_height Int
   image_width  Int
   url          String   @unique
   createdAt    DateTime @default(now())
