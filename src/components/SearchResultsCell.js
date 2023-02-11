@@ -1,5 +1,7 @@
 'use client';
 
+import styles from './search.module.css';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@mui/material';
@@ -11,23 +13,25 @@ export default function SearchResultsCell(props) {
 
     return (
         <>
-            <div style={{ display: 'flex' }}>
+            <div
+                className={styles.cell}
+                onClick={() => {
+                    setModalOpen(true);
+                }}
+            >
                 <Image
+                    style={{ margin: 'auto 0', marginRight: '25px' }}
                     height={props.image.height}
                     width={props.image.width}
                     src={props.image.url}
                     alt="Album Cover"
                 />
-                <h2>{props.name}</h2>
-                <p>{props.artist}</p>
-                <Button
-                    variant="contained"
-                    onClick={() => {
-                        setModalOpen(true);
-                    }}
-                >
-                    Request
-                </Button>
+                <div style={{ display: 'flex', margin: 'auto 0' }}>
+                    <h2>{props.name}</h2>
+                    <p style={{ margin: 'auto 0', marginLeft: '10px' }}>
+                        by: {props.artist}
+                    </p>
+                </div>
             </div>
             <SearchResultsModal
                 trackName={props.name}

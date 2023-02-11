@@ -3,3 +3,11 @@
     display: flex;
     gap: 25px;
 }
+
+.cell {
+    display: flex;
+}
+
+.cell:hover {
+    border: 1px solid gray;
+}
