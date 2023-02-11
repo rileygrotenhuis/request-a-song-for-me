@@ -2,13 +2,13 @@
 
 import { Container } from '@mui/system';
 import SearchForm from './SearchForm';
-import SearchResults from './SearchResults';
+import SearchResultsList from './SearchResultsList';
 
 export default function SearchContainer(props) {
     return (
         <Container>
             <SearchForm {...props} />
-            <SearchResults />
+            <SearchResultsList />
         </Container>
     );
 }

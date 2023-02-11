@@ -4,7 +4,7 @@ import { spotifySearchResults } from '@/atoms/spotifySearchResults';
 import Image from 'next/image';
 import { Button } from '@mui/material';
 
-export default function SearchResults() {
+export default function SearchResultsList() {
     const [searchResults, setSearchResults] =
         useRecoilState(spotifySearchResults);
 
