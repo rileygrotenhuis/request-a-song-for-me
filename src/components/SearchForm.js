@@ -1,10 +1,12 @@
 'use client';
 
+import styles from './search.module.css';
+
 import { useRecoilState } from 'recoil';
 import { spotifySearchResults } from '@/atoms/spotifySearchResults';
 
-import { Formik, Field, Form } from 'formik';
-import { Button } from '@mui/material';
+import { useFormik } from 'formik';
+import { Button, TextField } from '@mui/material';
 
 async function getSpotifySearchResults(accessToken, query) {
     const res = await fetch(
@@ -31,26 +33,32 @@ export default function SearchForm(props) {
     const [searchResults, setSearchResults] =
         useRecoilState(spotifySearchResults);
 
-    return (
-        <Formik
-            initialValues={{
-                searchQuery: '',
-            }}
-            onSubmit={async (values) => {
-                const searchResults = await getSpotifySearchResults(
-                    props.accessToken,
-                    values.searchQuery
-                );
+    const formik = useFormik({
+        initialValues: {
+            searchQuery: '',
+        },
+        onSubmit: async (values) => {
+            const searchResults = await getSpotifySearchResults(
+                props.accessToken,
+                values.searchQuery
+            );
 
-                setSearchResults(searchResults);
-            }}
-        >
-            <Form>
-                <Field type="text" name="searchQuery" />
-                <Button variant="contained" type="submit">
-                    Search
-                </Button>
-            </Form>
-        </Formik>
+            setSearchResults(searchResults);
+        }
+    });
+
+    return (
+        <form onSubmit={formik.handleSubmit} class={styles.form}>
+            <TextField
+                fullWidth
+                name="searchQuery"
+                label="Search..."
+                value={formik.values.searchQuery}
+                onChange={formik.handleChange}
+            />
+            <Button variant="contained" type="submit">
+                Search
+            </Button>
+        </form>        
     );
 }
