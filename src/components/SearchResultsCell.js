@@ -32,9 +32,7 @@ export default function SearchResultsCell(props) {
                 </div>
             </div>
             <SearchResultsModal
-                trackName={props.name}
-                trackArtist={props.artist}
-                trackUrl={props.url}
+                {...props}
                 modalOpen={modalOpen}
                 modalClose={handleModalClose}
             />

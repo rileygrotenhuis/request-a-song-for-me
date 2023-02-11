@@ -1,7 +1,23 @@
 'use client';
 
 import { Modal, Box, Typography, Button } from '@mui/material';
-import React, { useState } from 'react';
+
+async function requestNewSong(newSong) {
+    await fetch('/api/request', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            'name': newSong.name,
+            'artist': newSong.artist,
+            'image_url': newSong.image.url,
+            'image_height': newSong.image.height,
+            'image_width': newSong.image.width,
+            'url': newSong.url
+        }),
+    });
+}
 
 const style = {
     position: 'absolute',
@@ -30,7 +46,7 @@ export default function SearchResultsModal(props) {
                     component="h2"
                     textAlign="center"
                 >
-                    Request {props.trackName} by {props.trackArtist}?
+                    Request {props.name} by {props.artist}?
                 </Typography>
                 <div
                     style={{
@@ -46,8 +62,9 @@ export default function SearchResultsModal(props) {
                     </Button>
                     <Button
                         variant="contained"
-                        onClick={() => {
-                            alert(props.trackUrl);
+                        onClick={async () => {
+                            await requestNewSong(props);
+                            props.modalClose();
                         }}
                     >
                         Yes
