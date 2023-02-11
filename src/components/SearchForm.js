@@ -1,17 +1,22 @@
-"use client";
+'use client';
 
-import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { spotifySearchResults } from '@/atoms/spotifySearchResults';
+
 import { Formik, Field, Form } from 'formik';
-import { Button } from "@mui/material";
+import { Button } from '@mui/material';
 
 async function getSpotifySearchResults(accessToken, query) {
-    const res = await fetch(`https://api.spotify.com/v1/search?type=track&q=${query}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-        },
-    });
+    const res = await fetch(
+        `https://api.spotify.com/v1/search?type=track&q=${query}`,
+        {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        }
+    );
 
     if (!res.ok) {
         throw new Error('Failed to fetch data');
@@ -23,28 +28,26 @@ async function getSpotifySearchResults(accessToken, query) {
 }
 
 export default function SearchForm(props) {
-    const [searchResults, setSearchResults] = useState({});
+    const [searchResults, setSearchResults] =
+        useRecoilState(spotifySearchResults);
 
     return (
         <Formik
             initialValues={{
-                searchQuery: ''
+                searchQuery: '',
             }}
             onSubmit={async (values) => {
-                const searchResults = await getSpotifySearchResults(props.accessToken, values.searchQuery);
-            
+                const searchResults = await getSpotifySearchResults(
+                    props.accessToken,
+                    values.searchQuery
+                );
+
                 setSearchResults(searchResults);
             }}
         >
             <Form>
-                <Field
-                    type="text"
-                    name="searchQuery"
-                />
-                <Button
-                    variant="contained"
-                    type="submit"
-                >
+                <Field type="text" name="searchQuery" />
+                <Button variant="contained" type="submit">
                     Search
                 </Button>
             </Form>
