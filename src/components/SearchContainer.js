@@ -1,9 +1,9 @@
 'use client';
 
+import SearchResultsList from './SearchResultsList';
 import { Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import SearchForm from './SearchForm';
-import SearchResultsList from './SearchResultsList';
 
 export default function SearchContainer(props) {
     return (

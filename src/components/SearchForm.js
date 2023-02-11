@@ -1,12 +1,10 @@
 'use client';
 
-import styles from './search.module.css';
-
-import { useRecoilState } from 'recoil';
 import { spotifySearchResults } from '@/atoms/spotifySearchResults';
-
-import { useFormik } from 'formik';
 import { Button, TextField } from '@mui/material';
+import styles from './search.module.css';
+import { useRecoilState } from 'recoil';
+import { useFormik } from 'formik';
 
 async function getSpotifySearchResults(accessToken, query) {
     const res = await fetch(

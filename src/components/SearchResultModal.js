@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
 import { Modal, Box, Typography, Button } from '@mui/material';
+import React, { useState } from 'react';
 
 const style = {
     position: 'absolute',

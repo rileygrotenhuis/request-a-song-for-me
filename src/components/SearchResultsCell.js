@@ -1,11 +1,9 @@
 'use client';
 
+import SearchResultsModal from './SearchResultModal';
 import styles from './search.module.css';
-
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Button } from '@mui/material';
-import SearchResultsModal from './SearchResultModal';
 
 export default function SearchResultsCell(props) {
     const [modalOpen, setModalOpen] = useState(false);

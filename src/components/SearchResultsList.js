@@ -1,7 +1,6 @@
-import { useRecoilState } from 'recoil';
 import { spotifySearchResults } from '@/atoms/spotifySearchResults';
-
 import SearchResultsCell from './SearchResultsCell';
+import { useRecoilState } from 'recoil';
 
 export default function SearchResultsList() {
     const [searchResults, setSearchResults] =
