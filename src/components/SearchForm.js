@@ -44,11 +44,11 @@ export default function SearchForm(props) {
             );
 
             setSearchResults(searchResults);
-        }
+        },
     });
 
     return (
-        <form onSubmit={formik.handleSubmit} class={styles.form}>
+        <form onSubmit={formik.handleSubmit} className={styles.form}>
             <TextField
                 fullWidth
                 name="searchQuery"
@@ -59,6 +59,6 @@ export default function SearchForm(props) {
             <Button variant="contained" type="submit">
                 Search
             </Button>
-        </form>        
+        </form>
     );
 }

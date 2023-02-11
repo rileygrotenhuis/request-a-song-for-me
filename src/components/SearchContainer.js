@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Container } from '@mui/system';
 import SearchForm from './SearchForm';
