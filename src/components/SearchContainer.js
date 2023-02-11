@@ -4,6 +4,7 @@ import { useRecoilState } from 'recoil';
 import { spotifySearchResults } from '@/atoms/spotifySearchResults';
 
 import SearchForm from './SearchForm';
+import SearchResults from './SearchResults';
 
 export default function SearchContainer(props) {
     const [searchResults, setSearchResults] =
@@ -12,7 +13,7 @@ export default function SearchContainer(props) {
     return (
         <>
             <SearchForm {...props} />
-            {JSON.stringify(searchResults)}
+            <SearchResults />
         </>
     );
 }
