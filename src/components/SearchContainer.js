@@ -8,7 +8,13 @@ import SearchResultsList from './SearchResultsList';
 export default function SearchContainer(props) {
     return (
         <Container>
-            <Typography variant="h4" textAlign="center" style={{ marginTop: '5%' }}>Request a Song for Me!</Typography>
+            <Typography
+                variant="h4"
+                textAlign="center"
+                style={{ marginTop: '5%' }}
+            >
+                Request a Song for Me!
+            </Typography>
             <SearchForm {...props} />
             <SearchResultsList />
         </Container>
