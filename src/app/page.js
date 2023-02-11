@@ -1,4 +1,4 @@
-import SearchForm from "@/components/SearchForm";
+import SearchContainer from "@/components/SearchContainer";
 
 async function getUserSpotifyAccessToken() {
     const res = await fetch(
@@ -30,7 +30,7 @@ export default async function Page() {
 
     return (
         <>
-            <SearchForm accessToken={userSpotifyAccessToken.access_token} />
+            <SearchContainer accessToken={userSpotifyAccessToken.access_token} />
         </>
     );
 }
