@@ -18,11 +18,11 @@ async function getUserSpotifyAccessToken() {
         }
     );
 
-    res = await res.json();
+    const data = await res.json();
 
-    console.log(res);
+    console.log(data);
 
-    return res;
+    return data;
 }
 
 export default async function Page() {
