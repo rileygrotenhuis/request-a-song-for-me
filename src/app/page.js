@@ -18,7 +18,11 @@ async function getUserSpotifyAccessToken() {
         }
     );
 
-    return res.json();
+    res = await res.json();
+
+    console.log(res);
+
+    return res;
 }
 
 export default async function Page() {
