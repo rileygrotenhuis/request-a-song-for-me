@@ -30,7 +30,6 @@ export default async function Page() {
 
     return (
         <>
-            {JSON.stringify(userSpotifyAccessToken.access_token)}
             <SearchContainer
                 accessToken={userSpotifyAccessToken.access_token}
             />
