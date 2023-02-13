@@ -14,6 +14,7 @@ async function requestNewSong(newSong) {
             image_url: newSong.image.url,
             image_height: newSong.image.height,
             image_width: newSong.image.width,
+            preview_url: newSong.preview_url,
             url: newSong.url,
         }),
     });

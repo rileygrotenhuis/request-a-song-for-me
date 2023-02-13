@@ -6,8 +6,15 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const requestBody = JSON.parse(req.body);
 
-        const { name, artist, image_url, image_height, image_width, url } =
-            requestBody;
+        const {
+            name,
+            artist,
+            image_url,
+            image_height,
+            image_width,
+            preview_url,
+            url,
+        } = requestBody;
 
         const newRequest = await prisma.request.create({
             data: {
@@ -16,6 +23,7 @@ export default async function handler(req, res) {
                 image_url,
                 image_height,
                 image_width,
+                preview_url,
                 url,
             },
         });

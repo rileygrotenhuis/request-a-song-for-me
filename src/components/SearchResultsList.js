@@ -16,6 +16,7 @@ export default function SearchResultsList() {
                             image={item.album.images[2]}
                             name={item.name}
                             artist={item.artists[0].name}
+                            preview_url={item.preview_url}
                             url={`spotify:track:${item.id}`}
                         />
                     );

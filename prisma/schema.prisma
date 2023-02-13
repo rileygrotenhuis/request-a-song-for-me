@@ -15,6 +15,7 @@ model Request {
   image_height Int
   image_width  Int
   url          String   @unique
+  preview_url  String   @unique
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
