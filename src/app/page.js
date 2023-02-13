@@ -1,5 +1,7 @@
 import SearchContainer from '@/components/SearchContainer';
 
+export const revalidate = 60;
+
 async function getUserSpotifyAccessToken() {
     const res = await fetch(
         'https://accounts.spotify.com/api/token?grant_type=client_credentials',
@@ -19,8 +21,6 @@ async function getUserSpotifyAccessToken() {
     );
 
     const data = await res.json();
-
-    console.log(data);
 
     return data;
 }
