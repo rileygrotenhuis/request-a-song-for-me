@@ -2,8 +2,12 @@
 
 import { Modal, Box, Typography, Button } from '@mui/material';
 
-async function addSongToSpotifyQueue(newSong) {
-    return 'testing';
+async function removeSongRequest(request) {
+    alert(`Removing song request: ${request.id}`);
+}
+
+async function addSongToSpotifyQueue(request) {
+    alert('Adding song to Spotify Queue');
 }
 
 const style = {
@@ -44,20 +48,23 @@ export default function ResultsModal(props) {
                         marginTop: '5px',
                     }}
                 >
-                    <Button variant="outlined" onClick={props.modalClose}>
-                        No
+                    <Button
+                        variant="outlined"
+                        onClick={async () => {
+                            await removeSongRequest(props);
+                            props.modalClose();
+                        }}
+                    >
+                        Deny
                     </Button>
                     <Button
                         variant="contained"
                         onClick={async () => {
-                            const addToQueue = await addSongToSpotifyQueue(
-                                props
-                            );
-                            alert(addToQueue);
+                            await addSongToSpotifyQueue(props);
                             props.modalClose();
                         }}
                     >
-                        Yes
+                        Approve
                     </Button>
                 </div>
             </Box>

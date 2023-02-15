@@ -1,4 +1,4 @@
-import ResultsContainer from "@/components/ResultsContainer";
+import ResultsContainer from '@/components/ResultsContainer';
 
 export const revalidate = 0;
 
@@ -15,9 +15,7 @@ export default async function Page() {
 
     return (
         <>
-            <ResultsContainer
-                requests={allRequests}
-            />
+            <ResultsContainer requests={allRequests} />
         </>
     );
 }
