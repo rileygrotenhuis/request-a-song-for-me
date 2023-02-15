@@ -1,6 +1,6 @@
 import ResultsContainer from "@/components/ResultsContainer";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 async function getAllRequests() {
     const res = await fetch(`${process.env.APP_URL}/api/request`);
