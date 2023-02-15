@@ -1,6 +1,6 @@
 import SearchContainer from '@/components/SearchContainer';
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 async function getUserSpotifyAccessToken() {
     const res = await fetch(
