@@ -35,5 +35,7 @@ export default async function handler(req, res) {
 
     const allRequests = await prisma.request.findMany();
 
+    prisma.$disconnect();
+
     return res.status(200).json(allRequests);
 }
