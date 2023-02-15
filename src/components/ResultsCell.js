@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import styles from './search.module.css';
 import React, { useState } from 'react';
@@ -37,5 +37,5 @@ export default function ResultsCell(props) {
                 modalClose={handleModalClose}
             />
         </>
-    )
+    );
 }

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import ResultsCell from "./ResultsCell";
+import ResultsCell from './ResultsCell';
 
 export default function ResultsList(props) {
     return (

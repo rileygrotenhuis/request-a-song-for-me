@@ -50,7 +50,9 @@ export default function ResultsModal(props) {
                     <Button
                         variant="contained"
                         onClick={async () => {
-                            const addToQueue = await addSongToSpotifyQueue(props);
+                            const addToQueue = await addSongToSpotifyQueue(
+                                props
+                            );
                             alert(addToQueue);
                             props.modalClose();
                         }}

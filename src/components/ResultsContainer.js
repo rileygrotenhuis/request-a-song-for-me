@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Typography } from '@mui/material';
 import { Container } from '@mui/system';
@@ -14,9 +14,7 @@ export default function ResultsContainer(props) {
             >
                 All Requests:
             </Typography>
-            <ResultsList
-                {...props}
-            />
+            <ResultsList {...props} />
         </Container>
-    )
+    );
 }

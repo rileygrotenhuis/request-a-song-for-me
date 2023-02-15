@@ -1,6 +1,5 @@
+import { use } from 'react';
 import SearchContainer from '@/components/SearchContainer';
-
-export const revalidate = 0;
 
 async function getUserSpotifyAccessToken() {
     const res = await fetch(
@@ -25,8 +24,8 @@ async function getUserSpotifyAccessToken() {
     return data;
 }
 
-export default async function Page() {
-    const userSpotifyAccessToken = await getUserSpotifyAccessToken();
+export default function Page() {
+    const userSpotifyAccessToken = use(getUserSpotifyAccessToken());
 
     return (
         <>
