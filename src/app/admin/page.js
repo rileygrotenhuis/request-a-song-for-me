@@ -1,5 +1,6 @@
-import { use } from 'react';
-import ResultsContainer from '@/components/ResultsContainer';
+import ResultsContainer from "@/components/ResultsContainer";
+
+export const revalidate = 60;
 
 async function getAllRequests() {
     const res = await fetch(`${process.env.APP_URL}/api/request`);
@@ -9,12 +10,14 @@ async function getAllRequests() {
     return data;
 }
 
-export default function Page() {
-    const allRequests = use(getAllRequests());
+export default async function Page() {
+    const allRequests = await getAllRequests();
 
     return (
         <>
-            <ResultsContainer requests={allRequests} />
+            <ResultsContainer
+                requests={allRequests}
+            />
         </>
     );
 }
